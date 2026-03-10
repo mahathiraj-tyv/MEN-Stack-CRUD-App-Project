@@ -179,7 +179,11 @@ This project demonstrates:
 
 - CRUD operations
 <img width="1662" height="655" alt="Screenshot 2026-02-27 102156" src="https://github.com/user-attachments/assets/87bddd2c-734b-43a5-84e7-304038db763c" />
-<img width="1662" height="655" alt="Screenshot 2026-02-27 102156" src="https://github.com/user-attachments/assets/87bddd2c-734b-43a5-84e7-304038db763c" />
+<img width="1882" height="783" alt="Screenshot 2026-02-27 102010" src="https://github.com/user-attachments/assets/3bef0074-5082-4a05-a5d6-e1ae542b9ae3" />
+<img width="1892" height="897" alt="Screenshot 2026-02-27 102759" src="https://github.com/user-attachments/assets/24de36bd-6444-4498-9381-7173302df553" />
+
+
+
 
 - Session-based authentication
 
