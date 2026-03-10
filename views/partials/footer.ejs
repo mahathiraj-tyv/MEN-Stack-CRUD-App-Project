@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>footer</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <footer class="bg-dark text-white text-center p-3 mt-4">
+  &copy; 2026 TravelZap. All Rights Reserved.
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- ================= CHATBOT ================= -->
+
+<style>
+  #chatButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+  }
+
+  #chatBox {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 320px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    z-index: 9999;
+  }
+
+  #chatHeader {
+    background: #ffc107;
+    padding: 10px;
+    font-weight: bold;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  #chatMessages {
+    padding: 10px;
+    height: 250px;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+
+  .user-msg {
+    text-align: right;
+    margin: 5px 0;
+  }
+
+  .bot-msg {
+    text-align: left;
+    margin: 5px 0;
+    color: #333;
+  }
+
+  #chatInputArea {
+    display: flex;
+    border-top: 1px solid #ddd;
+  }
+
+  #chatInput {
+    flex: 1;
+    border: none;
+    padding: 8px;
+  }
+
+  #sendBtn {
+    background: #ffc107;
+    border: none;
+    padding: 8px 12px;
+  }
+</style>
+
+<button id="chatButton">💬</button>
+
+<div id="chatBox">
+  <div id="chatHeader">
+    TravelZap Support
+  </div>
+  <div id="chatMessages"></div>
+  <div id="chatInputArea">
+    <input type="text" id="chatInput" placeholder="Ask something...">
+    <button id="sendBtn">Send</button>
+  </div>
+</div>
+
+<script>
+  const chatButton = document.getElementById("chatButton");
+  const chatBox = document.getElementById("chatBox");
+  const chatMessages = document.getElementById("chatMessages");
+  const chatInput = document.getElementById("chatInput");
+  const sendBtn = document.getElementById("sendBtn");
+
+  chatButton.onclick = () => {
+    chatBox.style.display = chatBox.style.display === "flex" ? "none" : "flex";
+    chatBox.style.display = "flex";
+  };
+
+  function addMessage(message, className) {
+    const msgDiv = document.createElement("div");
+    msgDiv.className = className;
+    msgDiv.innerText = message;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function botReply(message) {
+    message = message.toLowerCase();
+
+    if (message.includes("refund")) {
+      return "Refunds are processed within 5-7 working days after cancellation.";
+    }
+    if (message.includes("cancel")) {
+      return "You can cancel booking from 'My Bookings' section in dashboard.";
+    }
+    if (message.includes("book")) {
+      return "To book tickets, search route, select seats and click Book Now.";
+    }
+    if (message.includes("payment")) {
+      return "Currently payment is handled at booking confirmation.";
+    }
+    if (message.includes("contact")) {
+      return "You can contact us at support@travelzap.com.";
+    }
+
+    return "Sorry, I didn't understand that. Please ask about booking, refund, cancel or payment.";
+  }
+
+  sendBtn.onclick = () => {
+    const userText = chatInput.value.trim();
+    if (!userText) return;
+
+    addMessage(userText, "user-msg");
+    const reply = botReply(userText);
+    setTimeout(() => addMessage(reply, "bot-msg"), 500);
+
+    chatInput.value = "";
+  };
+
+  chatInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") sendBtn.click();
+  });
+</script>
+
+</body>
+</html>
